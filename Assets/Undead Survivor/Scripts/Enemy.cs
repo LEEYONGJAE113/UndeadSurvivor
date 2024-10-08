@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -32,5 +33,10 @@ public class Enemy : MonoBehaviour
     {
         if (!isLive) { return; }
         spriter.flipX = (target.position.x < rigid.position.x);
+    }
+
+    void OnEnable()
+    {
+        target = GameManager.instance.player.GetComponent<Rigidbody2D>();
     }
 }
